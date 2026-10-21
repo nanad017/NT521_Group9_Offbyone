@@ -1,0 +1,12 @@
+services:
+  oversight:
+    build:
+      context: .
+      args:
+        FLAG: "${OVERSIGHT_FLAG:-DUCTF{local_oversight}}"
+    ports:
+      - "${OVERSIGHT_HOST_PORT:-31909}:31909"
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
